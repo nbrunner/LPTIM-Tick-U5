@@ -41,8 +41,8 @@
 #define B1_Pin    USER_BUTTON_Pin
 #define B1_Port   USER_BUTTON_GPIO_Port
 
-#define LED_On    GPIO_PIN_RESET
-#define LED_Off   GPIO_PIN_SET
+#define LED_On    GPIO_PIN_SET
+#define LED_Off   GPIO_PIN_RESET
 
 #define NOTIFICATION_FLAG_B1_PIN    (1UL << 0)
 #define NOTIFICATION_FLAG_LED_BLIP  (1UL << 1)
