@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -92,6 +92,7 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
   }
   /* Enable the TIM17 global Interrupt */
   HAL_NVIC_EnableIRQ(TIM17_IRQn);
+
  /* Return function status */
   return status;
 }

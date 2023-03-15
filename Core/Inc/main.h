@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -57,29 +57,33 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define PH3_BOOT0_Pin GPIO_PIN_3
-#define PH3_BOOT0_GPIO_Port GPIOH
-#define T_SWCLK_Pin GPIO_PIN_14
-#define T_SWCLK_GPIO_Port GPIOA
-#define PC14_OSC32_IN_Pin GPIO_PIN_14
-#define PC14_OSC32_IN_GPIO_Port GPIOC
-#define T_SWO_Pin GPIO_PIN_3
-#define T_SWO_GPIO_Port GPIOB
-#define PC15_OSC32_OUT_Pin GPIO_PIN_15
-#define PC15_OSC32_OUT_GPIO_Port GPIOC
-#define USER_Button_Pin GPIO_PIN_13
-#define USER_Button_GPIO_Port GPIOC
-#define USER_Button_EXTI_IRQn EXTI13_IRQn
-#define LED_RED_Pin GPIO_PIN_6
-#define LED_RED_GPIO_Port GPIOH
+#define USER_BUTTON_Pin GPIO_PIN_13
+#define USER_BUTTON_GPIO_Port GPIOC
+#define VBUS_SENSE_Pin GPIO_PIN_2
+#define VBUS_SENSE_GPIO_Port GPIOC
+#define UCPD_FLT_Pin GPIO_PIN_14
+#define UCPD_FLT_GPIO_Port GPIOB
+#define UCPD1_CC2_Pin GPIO_PIN_15
+#define UCPD1_CC2_GPIO_Port GPIOB
+#define LED_RED_Pin GPIO_PIN_2
+#define LED_RED_GPIO_Port GPIOG
 #define LED_GREEN_Pin GPIO_PIN_7
-#define LED_GREEN_GPIO_Port GPIOH
-#define T_VCP_RX_Pin GPIO_PIN_10
-#define T_VCP_RX_GPIO_Port GPIOA
-#define T_SWDIO_Pin GPIO_PIN_13
-#define T_SWDIO_GPIO_Port GPIOA
-#define T_VCP_TX_Pin GPIO_PIN_9
-#define T_VCP_TX_GPIO_Port GPIOA
+#define LED_GREEN_GPIO_Port GPIOC
+#define USART1_TX_Pin GPIO_PIN_9
+#define USART1_TX_GPIO_Port GPIOA
+#define USART1_RX_Pin GPIO_PIN_10
+#define USART1_RX_GPIO_Port GPIOA
+#define USB_OTG_FS_DM_Pin GPIO_PIN_11
+#define USB_OTG_FS_DM_GPIO_Port GPIOA
+#define USB_OTG_FS_DP_Pin GPIO_PIN_12
+#define USB_OTG_FS_DP_GPIO_Port GPIOA
+#define UCPD1_CC1_Pin GPIO_PIN_15
+#define UCPD1_CC1_GPIO_Port GPIOA
+#define UCPD_DBn_Pin GPIO_PIN_5
+#define UCPD_DBn_GPIO_Port GPIOB
+#define LED_BLUE_Pin GPIO_PIN_7
+#define LED_BLUE_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
