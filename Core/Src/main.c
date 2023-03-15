@@ -38,8 +38,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define B1_Pin    USER_Button_Pin
-#define B1_Port   USER_Button_GPIO_Port
+#define B1_Pin    USER_BUTTON_Pin
+#define B1_Port   USER_BUTTON_GPIO_Port
 
 #define LED_On    GPIO_PIN_RESET
 #define LED_Off   GPIO_PIN_SET
