@@ -54,6 +54,8 @@
 #define STACK_DEPTH_TT_OS_TASK      256
 #define TASK_PRIORITY_TT_OS_TASK    2
 
+#define ENABLE_UART 0
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -81,7 +83,9 @@ TimerHandle_t resultsTimerHandle;
 void SystemClock_Config(void);
 static void SystemPower_Config(void);
 static void MX_GPIO_Init(void);
+#if ENABLE_UART
 static void MX_USART1_UART_Init(void);
+#endif
 static void MX_RTC_Init(void);
 static void MX_LPTIM3_Init(void);
 /* USER CODE BEGIN PFP */
@@ -157,6 +161,7 @@ static void vSetDemoState( BaseType_t state )
       xTaskNotify(mainTaskHandle, NOTIFICATION_FLAG_LED_BLIP, eSetBits);
    }
 
+#if ENABLE_UART
    char banner[100];
    int len = sprintf(banner, "\r\n\r\nRunning Test %d.", (int)state + 1);
    if (state != DEMO_STATE_TEST_1)
@@ -165,6 +170,7 @@ static void vSetDemoState( BaseType_t state )
                      TICK_TEST_SAMPLING_INTERVAL_MS);
    }
    HAL_UART_Transmit(&huart1, (uint8_t*)banner, len, HAL_MAX_DELAY);
+#endif
 }
 
 static int lDescribeTickTestResults(TttResults_t* results, int periodNumber, char* dest)
@@ -210,6 +216,7 @@ static BaseType_t xUpdateResults( int xDemoState )
    // tickless idle (if enabled).  This barrage of early wake-ups is a great stress test for the tickless
    // logic.  In the other demo states, use busy-wait I/O to avoid adding a test actor when we don't want one.
    //
+#if ENABLE_UART
    if (xDemoState == DEMO_STATE_TEST_3)
    {
       vUlpOnPeripheralsActive(ulpPERIPHERAL_USART1);
@@ -224,6 +231,7 @@ static BaseType_t xUpdateResults( int xDemoState )
       HAL_UART_Transmit(&huart1, (uint8_t*)textResults, resultsLen, HAL_MAX_DELAY);
       // vUlpOnPeripheralsInactive(ulpPERIPHERAL_USART1);
    }
+#endif
 
    //      Apply some pass/fail criteria and report any failures.
    //
@@ -306,7 +314,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+#if ENABLE_UART
   MX_USART1_UART_Init();
+#endif
   MX_RTC_Init();
   MX_LPTIM3_Init();
   /* USER CODE BEGIN 2 */
@@ -524,6 +534,7 @@ static void MX_RTC_Init(void)
   * @param None
   * @retval None
   */
+#if ENABLE_UART
 static void MX_USART1_UART_Init(void)
 {
 
@@ -566,6 +577,7 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE END USART1_Init 2 */
 
 }
+#endif
 
 /**
   * @brief GPIO Initialization Function
