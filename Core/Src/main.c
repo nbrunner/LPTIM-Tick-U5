@@ -54,8 +54,8 @@
 #define STACK_DEPTH_TT_OS_TASK      256
 #define TASK_PRIORITY_TT_OS_TASK    2
 
-#define ENABLE_UART 0
-#define ENABLE_LED 0
+#define ENABLE_UART 1
+#define ENABLE_LED 1
 
 /* USER CODE END PD */
 
