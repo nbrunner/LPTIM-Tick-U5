@@ -55,6 +55,7 @@
 #define TASK_PRIORITY_TT_OS_TASK    2
 
 #define ENABLE_UART 0
+#define ENABLE_LED 0
 
 /* USER CODE END PD */
 
@@ -259,9 +260,13 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 
 void vBlipLed( uint32_t ms )
 {
+#if ENABLE_LED
    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, LED_On);
+#endif
    vTaskDelay(pdMS_TO_TICKS(ms));
+#if ENABLE_LED
    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, LED_Off);
+#endif
 }
 
 /* USER CODE END 0 */
