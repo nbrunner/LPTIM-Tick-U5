@@ -638,17 +638,6 @@ static void MX_GPIO_Init(void)
 
 static void mainOsTask(void* argument)
 {
-   //      Stop the timer that provides the HAL tick.  Now it won't needlessly interrupt tickless idle periods
-   // that use sleep mode.  (The HAL tick already can't interrupt tickless idle periods that use stop mode,
-   // because the HAL timer doesn't operate in stop mode.)  In a real application, the HAL tick might be
-   // required by the HAL even after FreeRTOS has control.  It's still best to stop the timer here, and then
-   // define HAL_GetTick() and HAL_Delay() to use the FreeRTOS tick (and delay) once available.
-   //
-   //      We don't call HAL_SuspendTick() here because that function leaves TIM17 enabled and running for no
-   // reason.
-   //
-   TIM17->CR1 &= ~TIM_CR1_CEN;  // wish CubeMX would generate a symbol for the HAL tick timer
-
    //      Be sure LPTIM3 ignores its input clock when the debugger stops program execution, and be sure its
    // kernel clock keeps running in STOP2 mode.
    //
@@ -763,27 +752,6 @@ void vApplicationMallocFailedHook( void )
 }
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM17 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM17) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.
