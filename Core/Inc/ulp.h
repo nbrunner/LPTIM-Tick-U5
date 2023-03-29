@@ -16,6 +16,9 @@
 //
 // #define configMIN_RUN_BETWEEN_DEEP_SLEEPS  ( (13U * configCPU_CLOCK_HZ) / 1000000 )  // 13us for 1.8V VDD
 
+#ifndef ULP_H
+#define ULP_H
+
 void vUlpInit();
 
 //      Define an application-specific set of peripherals of interest to the ULP support code.  The values
@@ -38,3 +41,6 @@ void vUlpOnPeripheralsInactiveFromISR( int xPeripherals );
 void vUlpPreSleepProcessing();
 
 void vUlpPostSleepProcessing();
+
+#endif
+
